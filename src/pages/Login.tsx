@@ -4,6 +4,7 @@ import {
   Heading,
   Text,
   VStack,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { FaDiscord } from 'react-icons/fa';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -12,6 +13,9 @@ import { useDiscordAuth } from '../hooks/useDiscordAuth';
 export const Login = () => {
   const { login } = useDiscordAuth();
   usePageTitle('Login');
+  
+  const bgColor = useColorModeValue('gray.50', 'gray.900');
+  const boxBgColor = useColorModeValue('white', 'gray.800');
 
   return (
     <Box
@@ -19,7 +23,7 @@ export const Login = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      bg="gray.50"
+      bg={bgColor}
     >
       <Box
         p={8}
@@ -27,7 +31,7 @@ export const Login = () => {
         borderWidth={1}
         borderRadius={8}
         boxShadow="lg"
-        bg="white"
+        bg={boxBgColor}
       >
         <VStack spacing={4}>
           <Heading>Login</Heading>
