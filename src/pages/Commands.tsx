@@ -12,6 +12,7 @@ import {
   Divider,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 interface Command {
   name: string;
@@ -117,6 +118,7 @@ const CommandCard = ({ command }: { command: Command }) => {
 
 export const Commands = () => {
   const bgColor = useColorModeValue('gray.50', 'gray.900');
+  usePageTitle('Comandos');
 
   return (
     <Box minH="100vh" bg={bgColor} py={10}>

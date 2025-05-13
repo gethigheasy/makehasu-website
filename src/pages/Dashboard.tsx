@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDiscordAuth } from '../hooks/useDiscordAuth';
+import { usePageTitle } from '../hooks/usePageTitle';
 import {
   Box,
   Container,
@@ -22,6 +23,7 @@ export const Dashboard = () => {
   const { user, loading, logout } = useDiscordAuth();
   const navigate = useNavigate();
   const { onCopy, hasCopied } = useClipboard(user?.id || '');
+  usePageTitle('Dashboard');
 
   useEffect(() => {
     if (!loading && !user) {

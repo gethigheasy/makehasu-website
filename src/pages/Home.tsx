@@ -12,6 +12,7 @@ import {
 import { FaDiscord, FaRobot, FaShieldAlt, FaInstagram, FaTerminal } from 'react-icons/fa';
 import { Link as RouterLink } from 'react-router-dom';
 import { useDiscordAuth } from '../hooks/useDiscordAuth';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 const Feature = ({ icon, title, text }: { icon: any; title: string; text: string }) => {
   return (
@@ -36,6 +37,7 @@ const Feature = ({ icon, title, text }: { icon: any; title: string; text: string
 
 export const Home = () => {
   const { login } = useDiscordAuth();
+  usePageTitle('Início');
 
   return (
     <Box>
