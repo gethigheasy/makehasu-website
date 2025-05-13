@@ -1,12 +1,8 @@
 import {
   Box,
   Button,
-  Container,
-  Flex,
   Heading,
-  Stack,
   Text,
-  useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
 import { FaDiscord } from 'react-icons/fa';
