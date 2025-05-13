@@ -9,6 +9,7 @@ import {
 import { FaDiscord } from 'react-icons/fa';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { useDiscordAuth } from '../hooks/useDiscordAuth';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 export const Login = () => {
   const { login } = useDiscordAuth();
@@ -25,6 +26,7 @@ export const Login = () => {
       justifyContent="center"
       bg={bgColor}
     >
+      <ThemeToggle />
       <Box
         p={8}
         maxWidth="400px"
