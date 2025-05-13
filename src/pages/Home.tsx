@@ -13,8 +13,10 @@ import { FaDiscord, FaRobot, FaShieldAlt, FaInstagram, FaTerminal } from 'react-
 import { Link as RouterLink } from 'react-router-dom';
 import { useDiscordAuth } from '../hooks/useDiscordAuth';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { Layout } from '../components/Layout';
 
 const Feature = ({ icon, title, text }: { icon: any; title: string; text: string }) => {
+  const textColor = useColorModeValue('gray.800', 'white');
   return (
     <Stack spacing={4} align="center" textAlign="center">
       <Flex
@@ -29,8 +31,8 @@ const Feature = ({ icon, title, text }: { icon: any; title: string; text: string
       >
         <Icon as={icon} w={8} h={8} />
       </Flex>
-      <Text fontWeight="bold" color="black" fontSize="lg" opacity={1}>{title}</Text>
-      <Text color="black" opacity={1}>{text}</Text>
+      <Text fontWeight="bold" color={textColor} fontSize="lg" opacity={1}>{title}</Text>
+      <Text color={textColor} opacity={1}>{text}</Text>
     </Stack>
   );
 };
@@ -38,10 +40,13 @@ const Feature = ({ icon, title, text }: { icon: any; title: string; text: string
 export const Home = () => {
   const { login } = useDiscordAuth();
   usePageTitle('Início');
+  const bgHero = useColorModeValue('gray.50', 'gray.900');
+  const headingColor = useColorModeValue('gray.900', 'white');
+  const subTextColor = useColorModeValue('gray.600', 'gray.300');
 
   return (
-    <Box>
-      <Box bg={useColorModeValue('gray.50', 'gray.900')} py={20}>
+    <Layout>
+      <Box bg={bgHero} py={20}>
         <Container maxW="container.xl">
           <Stack
             align="center"
@@ -53,6 +58,7 @@ export const Home = () => {
                 lineHeight={1.1}
                 fontWeight={600}
                 fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
+                color={headingColor}
               >
                 <Text
                   as="span"
@@ -75,7 +81,7 @@ export const Home = () => {
                   Feito por Visions e Vordlex
                 </Text>
               </Heading>
-              <Text color="gray.500">
+              <Text color={subTextColor}>
                 Makehasu é um bot Discord versátil e poderoso que oferece moderação,
                 música, diversão e muito mais para sua comunidade.
               </Text>
@@ -130,10 +136,10 @@ export const Home = () => {
       <Box py={20}>
         <Container maxW="container.xl">
           <Stack spacing={4} as={Container} maxW="3xl" textAlign="center" mb={16}>
-            <Heading fontSize="3xl" color="black" fontWeight="bold" opacity={1}>
+            <Heading fontSize="3xl" color={headingColor} fontWeight="bold" opacity={1}>
               Recursos Incríveis
             </Heading>
-            <Text color="black" opacity={1}>
+            <Text color={subTextColor} opacity={1}>
               O Makehasu oferece uma variedade de recursos para tornar seu servidor
               mais divertido e organizado.
             </Text>
@@ -162,6 +168,6 @@ export const Home = () => {
           </Stack>
         </Container>
       </Box>
-    </Box>
+    </Layout>
   );
 }; 

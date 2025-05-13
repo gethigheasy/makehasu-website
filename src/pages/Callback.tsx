@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useDiscordAuth } from '../hooks/useDiscordAuth';
-import { Box, Spinner, Text } from '@chakra-ui/react';
+import { Box, Spinner, Text, useColorModeValue } from '@chakra-ui/react';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { Layout } from '../components/Layout';
 
 export const Callback = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { handleCallback, error } = useDiscordAuth();
   usePageTitle('Autenticando');
+  const textColor = useColorModeValue('gray.800', 'white');
+  const errorColor = useColorModeValue('red.500', 'red.300');
 
   useEffect(() => {
     const code = searchParams.get('code');
@@ -23,16 +26,20 @@ export const Callback = () => {
 
   if (error) {
     return (
-      <Box textAlign="center" mt={8}>
-        <Text color="red.500">Erro: {error}</Text>
-      </Box>
+      <Layout>
+        <Box textAlign="center" mt={8}>
+          <Text color={errorColor}>Erro: {error}</Text>
+        </Box>
+      </Layout>
     );
   }
 
   return (
-    <Box textAlign="center" mt={8}>
-      <Spinner size="xl" />
-      <Text mt={4}>Autenticando...</Text>
-    </Box>
+    <Layout>
+      <Box textAlign="center" mt={8}>
+        <Spinner size="xl" />
+        <Text mt={4} color={textColor}>Autenticando...</Text>
+      </Box>
+    </Layout>
   );
 }; 
