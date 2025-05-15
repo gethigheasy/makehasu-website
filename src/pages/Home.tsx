@@ -90,7 +90,9 @@ export const Home = () => {
                 direction={{ base: 'column', sm: 'row' }}
               >
                 <Button
-                  onClick={login}
+                  as="a"
+                  href="https://discord.com/api/oauth2/authorize?client_id=1297764449175732246&permissions=8&scope=bot%20applications.commands"
+                  target="_blank"
                   rounded="full"
                   size="lg"
                   fontWeight="normal"
@@ -98,8 +100,20 @@ export const Home = () => {
                   colorScheme="purple"
                   bg="purple.400"
                   _hover={{ bg: 'purple.500' }}
+                  leftIcon={<FaRobot />}
                 >
-                  Começar Agora
+                  Adicionar Bot
+                </Button>
+                <Button
+                  onClick={login}
+                  rounded="full"
+                  size="lg"
+                  fontWeight="normal"
+                  px={6}
+                  variant="outline"
+                  colorScheme="purple"
+                >
+                  Dashboard
                 </Button>
                 <Button
                   as={RouterLink}
@@ -115,14 +129,15 @@ export const Home = () => {
                   Ver Comandos
                 </Button>
                 <Button
-                  as="a"
-                  href="https://discord.gg/makehasu"
-                  target="_blank"
+                  as={RouterLink}
+                  to="/emphasis"
                   rounded="full"
                   size="lg"
                   fontWeight="normal"
                   px={6}
                   leftIcon={<FaDiscord />}
+                  variant="outline"
+                  colorScheme="purple"
                 >
                   Servidor de Suporte
                 </Button>
